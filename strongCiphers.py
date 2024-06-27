@@ -1,0 +1,41 @@
+# Connect to the AdminConfig object using the wsadmin tool
+
+ 
+
+ 
+
+AdminTask.modifySSLConfig('[-alias CellDefaultSSLSettings -scopeName "(cell):AZWAPUAUWAISA04Cell01" -securityLevel CUSTOM -enabledCiphers "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256 TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384 TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256 TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384 TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256 TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384"]')
+
+ 
+
+# Modify SSL configuration for Node01
+
+AdminTask.modifySSLConfig('[-alias NodeDefaultSSLSettings -scopeName "(cell):AZWAPUAUWAISA04Cell01:(node):AZWAPUAUWAISA04Node01" -securityLevel CUSTOM -enabledCiphers "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256 TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384 TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256 TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384 TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256 TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384"]')
+
+ 
+
+# Save the configuration changes for Node01
+
+AdminConfig.save()
+
+ 
+
+# Modify SSL configuration for Node02
+
+AdminTask.modifySSLConfig('[-alias NodeDefaultSSLSettings -scopeName "(cell):AZWAPUAUWAISA04Cell01:(node):AZWAPUAUWAISA05Node01" -securityLevel CUSTOM -enabledCiphers "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256 TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384 TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256 TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384 TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256 TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384"]')
+
+ 
+
+# Save the configuration changes for Node02
+
+AdminConfig.save()
+
+ 
+
+# Synchronize all nodes
+
+syncResult = AdminControl.completeObjectName('type=NodeSync,node=*,*')
+
+print "Node synchronization result: " + syncResult
+
+ 
